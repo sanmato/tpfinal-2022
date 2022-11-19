@@ -1,0 +1,51 @@
+# depslib dependency file v1.0
+1668817111 source:f:\onedrive - utn frmdp\progra 2 cuatri\lab 2\tp final 2do cuatri\main.c
+	<stdio.h>
+	<stdlib.h>
+	"menu.h"
+
+1668817022 source:f:\onedrive - utn frmdp\progra 2 cuatri\lab 2\tp final 2do cuatri\menu.c
+	"menu.h"
+
+1668816930 f:\onedrive - utn frmdp\progra 2 cuatri\lab 2\tp final 2do cuatri\menu.h
+	<windows.h>
+	"clientes.h"
+	"pedidos.h"
+
+1668818504 f:\onedrive - utn frmdp\progra 2 cuatri\lab 2\tp final 2do cuatri\clientes.h
+	<stdio.h>
+	<stdlib.h>
+	<malloc.h>
+	<string.h>
+
+1668818098 f:\onedrive - utn frmdp\progra 2 cuatri\lab 2\tp final 2do cuatri\pedidos.h
+	"productos.h"
+
+1668816930 f:\onedrive - utn frmdp\progra 2 cuatri\lab 2\tp final 2do cuatri\productos.h
+	<stdio.h>
+	<stdlib.h>
+	<malloc.h>
+	<string.h>
+
+1668816482 source:f:\onedrive - utn frmdp\progra 2 cuatri\lab 2\tp final 2do cuatri\clientes.c
+	"clientes.h"
+
+1668816701 source:f:\onedrive - utn frmdp\progra 2 cuatri\lab 2\tp final 2do cuatri\pedidos.c
+	"pedidos.h"
+
+1668816606 source:f:\onedrive - utn frmdp\progra 2 cuatri\lab 2\tp final 2do cuatri\productos.c
+	"productos.h"
+
+1668818574 source:f:\onedrive - utn frmdp\progra 2 cuatri\lab 2\tp final 2do cuatri\arbol.c
+	"arbol.h"
+
+1668818098 f:\onedrive - utn frmdp\progra 2 cuatri\lab 2\tp final 2do cuatri\arbol.h
+	"clientes.h"
+	"lista.h"
+
+1668818335 f:\onedrive - utn frmdp\progra 2 cuatri\lab 2\tp final 2do cuatri\lista.h
+	"pedidos.h"
+
+1668818585 source:f:\onedrive - utn frmdp\progra 2 cuatri\lab 2\tp final 2do cuatri\lista.c
+	"lista.h"
+
