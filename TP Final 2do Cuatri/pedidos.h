@@ -28,6 +28,7 @@ int BajaPedidoPorCliente(char nombreArchivo[],int idPedido,int idCliente);
 ///Carga de pedidos
 void CargarUnPedido(char nombreArchivo[],char nombreArchivoProductos[],int idCliente);
 int ContarPedidosArchivos(char nombreArchivo[]);
+stProductos ObtenerNombreProducto(char nombreArchivo[],int id);
 
 
 #endif // PEDIDOS_H_INCLUDED

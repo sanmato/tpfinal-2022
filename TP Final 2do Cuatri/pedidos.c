@@ -6,7 +6,7 @@ void MostrarUnPedido(stPedido a)
     printf("idPedido--------- %i\n",a.idPedido);
     printf("IdCliente-------- %i\n",a.idCliente);
     printf("Fecha------------ %s\n",a.fecha);
-    printf("Descripcion:-combo%s\n",a.descripcion);
+    printf("Descripcion:----- %s\n",a.descripcion);
     printf("Costo------------ %.2f\n",a.costo);
     printf("Pedido anulado--- %i\n",a.pedidoAnulado);
     printf("\n");
@@ -25,8 +25,6 @@ void MostrarTodosLosPedidos(char nombreArchivo[])
 
         while(fread(&aux, sizeof(stPedido),1, archivin)>0)
         {
-
-
             MostrarUnPedido(aux);
         }
         fclose(archivin);
@@ -245,7 +243,9 @@ int ModifcarPedidoUsuario(char nombreArchivoPedidos[],int idPedido,int idCliente
                 if(idFlag==1)
                 {
 
-                    sprintf(aux.descripcion,"%i",id);
+
+
+
                     aux.costo=calcularPrecioSegundId(nombreArchivoProductos,id);
 
                 }
@@ -286,13 +286,13 @@ void  CargarUnPedido(char nombreArchivo[],char nombreArchivoProductos[],int idCl
 
     archivin = fopen(nombreArchivo,"ab");
 
-    printf("Carga de un pedido \n");
+    printf("\n\tCarga de un pedido \n");
     stPedido pedidos;
 
     pedidos.idCliente=idCliente;
 
 
-    printf("Ingrese Fecha  DD/MM/AAAA \n");
+    printf("\tIngrese Fecha  DD/MM/AAAA \n");
     fflush(stdin);
     gets(pedidos.fecha);
 
@@ -305,18 +305,18 @@ void  CargarUnPedido(char nombreArchivo[],char nombreArchivoProductos[],int idCl
     {
         system("cls");
         MostrarProductos(nombreArchivoProductos);
-        printf("Ingrese ID del producto que desea:");
+        printf("\tIngrese ID del producto que desea:");
         fflush(stdin);
         scanf("%i",&id);
         idFlag = ComprobarIdProducto(nombreArchivoProductos,id);
         if(idFlag==1)
         {
-
-            sprintf(pedidos.descripcion,"%i",id);
+            stProductos aux = ObtenerNombreProducto(nombreArchivoProductos,id);
+            strcpy(pedidos.descripcion,aux.descripcion);
         }
         else
         {
-            printf("el id ingresado es incorrecto\n");
+            printf("\tel id ingresado es incorrecto\n");
             system("pause");
         }
 
@@ -324,6 +324,7 @@ void  CargarUnPedido(char nombreArchivo[],char nombreArchivoProductos[],int idCl
     while(idFlag==0);
 
     pedidos.costo=calcularPrecioSegundId(nombreArchivoProductos,id);
+
 
     fwrite(&pedidos,sizeof(stPedido),1,archivin);
 
@@ -349,4 +350,24 @@ int ContarPedidosArchivos(char nombreArchivo[])
     }
 
     return cantidad;
+}
+
+stProductos ObtenerNombreProducto(char nombreArchivo[],int id)
+{
+    stProductos aux;
+    FILE * archivin = fopen(nombreArchivo,"rb");
+    int flag = 0;
+
+    if(archivin)
+    {
+        while(fread(&aux,sizeof(stProductos),1,archivin)> 0 && flag == 1)
+        {
+            if(aux.idProducto == id)
+            {
+                flag = 1;
+
+            }
+        }
+    }
+    return aux;
 }

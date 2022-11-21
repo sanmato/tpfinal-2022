@@ -4,8 +4,10 @@ void cargarUnClienteEnArchivo(int i, char archivo[])
 {
     int flag=0;
 
+
     stCliente a;
     stCliente b;
+
 
     FILE *archi;
     archi=fopen(archivo,"ab");                              ///modificar
@@ -13,17 +15,19 @@ void cargarUnClienteEnArchivo(int i, char archivo[])
     system("pause");
     if (archi!=NULL)
     {
-        printf("\nIngrese su mail: ");
-        fflush(stdin);
+        printf("\n\tIngrese su mail: ");
+        fflush(stdin);///validar email
+
+
         scanf("%s", a.mail);
 
-        printf("\nEl cliente sera identificado con el siguiente id: %i", i);
+        printf("\nEl cliente sera identificado con el siguiente id: %i", i);///POSICION
         a.idCliente=i;
 
-        printf("\n     Ingrese nombre: ");
+        printf("\n\tIngrese nombre: ");
         scanf("%s", a.nombre);
 
-        printf("\n   Ingrese apellido: ");
+        printf("\n\tIngrese apellido: ");
         scanf("%s", a.apellido);
 
         do
@@ -43,6 +47,7 @@ void cargarUnClienteEnArchivo(int i, char archivo[])
         }
         while (flag==0);
 
+
         printf("\nElija su contraseña (5 caracteres como maximo): ");
         fflush(stdin);
         scanf("%s", a.password);
@@ -55,7 +60,10 @@ void cargarUnClienteEnArchivo(int i, char archivo[])
 
         a.activo=1;
 
+        a.pedidos = NULL;
+
         fwrite(&a,sizeof(stCliente),1,archi);
+
 
         fclose(archi);
     }
@@ -109,11 +117,11 @@ void mostrarUnCliente(stCliente a)
     printf("\n    Genero: %c",a.genero);
     if (a.rol==1)
     {
-        printf("\n       Rol: Admin");
+        printf("\nRol: Admin");
     }
     else
     {
-        printf("\n       Rol: Usuario");
+        printf("\nRol: Usuario");
     }
     if (a.activo==1)
     {

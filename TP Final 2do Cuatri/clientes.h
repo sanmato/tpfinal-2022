@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <malloc.h>
 #include <string.h>
+#include <conio.h>
 
 typedef struct
 {
@@ -12,7 +13,7 @@ typedef struct
     char nombre[30];
     char apellido[30];
     char userName[20];
-    char password[20]; ///ver lo de arroba y esconder contra
+    char password[30]; ///ver lo de arroba y esconder contra
     char mail[30];
     char genero;
     int rol;                   // 1: es admin - 0: es común

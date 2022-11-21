@@ -11,6 +11,7 @@ void cargarArchivoProductos(char NombreArchivoProducto[])
 
     do
     {
+        archi=fopen(NombreArchivoProducto,"ab");
         cantidadProductos=contarProductosArchivo(NombreArchivoProducto)+1;
         printf("\nEl producto sera identificado con el id: %i\n",cantidadProductos);
         a.idProducto=cantidadProductos;
@@ -24,6 +25,7 @@ void cargarArchivoProductos(char NombreArchivoProducto[])
         scanf("%f", &a.precio);
 
         fwrite(&a,sizeof(stProductos),1,archi);
+        fclose(archi);
 
         printf("\nDesea agregar otro producto: s/n ");
         fflush(stdin);
