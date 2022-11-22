@@ -20,11 +20,18 @@ nodoArbolCliente * crearNodoArbol(stCliente dato);
 nodoArbolCliente * insertarPorId(nodoArbolCliente * arbol,nodoArbolCliente * nuevo);
 
 nodoArbolCliente * buscarUnNodoArbol(nodoArbolCliente * arbol,int id);
-nodoArbolCliente * eliminarNodoArbol(int id);
 
-nodoArbolCliente * mostrarArbolInorder(nodoArbolCliente * arbol);
+
+
+void mostrarArbolInorder(nodoArbolCliente * arbol);
+
+nodoArbolCliente * arrayToArbol(stCliente Array[],int base,int tope);
 
 void mostrarUnNodoArbol(stCliente dato);
+
+nodoArbolCliente * buscarMenor(nodoArbolCliente * arbol);
+
+nodoArbolCliente * eliminarNodoArbol(nodoArbolCliente * arbol, int id);
 
 
 

@@ -18,8 +18,12 @@ nodoListaPedidos * buscarNodoLista(nodoListaPedidos * lista, int id);
 nodoListaPedidos * eliminarNodoLista(nodoListaPedidos * lista,nodoListaPedidos * eliminar);
 
 
-void   mostrarUnNodo(stPedido dato);
 void   MostrarLista(nodoListaPedidos * lista);
+
+///eliminar pedidos de un cliente
+
+nodoListaPedidos * eliminarPrimerNodo(nodoListaPedidos * lista);
+nodoListaPedidos * eliminarLista(nodoListaPedidos * lista);
 
 
 #endif // LISTA_H_INCLUDED

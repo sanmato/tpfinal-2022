@@ -111,12 +111,27 @@ void MostrarLista(nodoListaPedidos * lista)
 
     while (seg)
     {
-        mostrarUnNodo(seg->dato);
+        MostrarUnPedido(seg->dato);
         seg=seg->sig;
     }
 }
 
-void mostrarUnNodo(stPedido dato)
+nodoListaPedidos * eliminarPrimerNodo(nodoListaPedidos * lista)
 {
-  ///HACER DEVUELTA
+    nodoListaPedidos* aBorrar = lista;
+    lista = lista->sig;
+    free(aBorrar);
+    return lista;
 }
+
+nodoListaPedidos * eliminarLista(nodoListaPedidos * lista)
+{
+    while(lista)
+    {
+        lista = eliminarPrimerNodo(lista);
+    }
+    return lista;
+}
+
+
+

@@ -1,0 +1,273 @@
+Lista de clientes:
+
+----------------------
+ Idcliente: 1
+    Nombre: Jose
+  Apellido: Bergues
+  UserName: jbergues
+  Password: 507indio
+      Mail: bergues@gmail.com
+    Genero: M
+Rol: Admin
+-------Cliente Activo-------
+----------------------
+ Idcliente: 2
+    Nombre: Mateo
+  Apellido: Rodriguez
+  UserName: mateo
+  Password: 507indio
+      Mail: mateo@gmail.com
+    Genero: M
+Rol: Usuario
+-------Cliente Activo-------
+----------------------
+ Idcliente: 3
+    Nombre: Lucas
+  Apellido: Perez
+  UserName: lucas
+  Password: 507indio
+      Mail: lucas@gmail.com
+    Genero: M
+Rol: Usuario
+-------Cliente Activo-------
+----------------------
+ Idcliente: 4
+    Nombre: Santiago
+  Apellido: Fernandez
+  UserName: santi
+  Password: 507indio
+      Mail: santiago@gmail.com
+    Genero: M
+Rol: Usuario
+-------Cliente Activo-------
+----------------------
+ Idcliente: 5
+    Nombre: Juan
+  Apellido: Lopez
+  UserName: juan
+  Password: 507indio
+      Mail: juan
+    Genero: M
+Rol: Usuario
+-------Cliente Activo-------
+----------------------
+ Idcliente: 6
+    Nombre: Pedro
+  Apellido: Morales
+  UserName: pedro
+  Password: 507indio
+      Mail: pedro@gmail.com
+    Genero: M
+Rol: Usuario
+-------Cliente Activo-------
+----------------------
+ Idcliente: 7
+    Nombre: Andres
+  Apellido: Salvador
+  UserName: andres@gmail.com
+  Password: 507indio
+      Mail: andres@gmail.com
+    Genero: M
+Rol: Usuario
+-------Cliente Activo-------
+----------------------
+ Idcliente: 8
+    Nombre: Felipe
+  Apellido: Cabral
+  UserName: felipe
+  Password: 507indio
+      Mail: felipe@gmail.com
+    Genero: M
+Rol: Usuario
+-------Cliente Activo-------
+----------------------
+ Idcliente: 9
+    Nombre: Maria
+  Apellido: Genovesse
+  UserName: maria
+  Password: 507indio
+      Mail: Maria
+    Genero: M
+Rol: Usuario
+-------Cliente Activo-------
+----------------------
+ Idcliente: 10
+    Nombre: Tomas
+  Apellido: Calabrese
+  UserName: tomas
+  Password: 507indio
+      Mail: tomas@gmail.com
+    Genero: M
+Rol: Usuario
+-------Cliente Activo-------
+----------------------
+ Idcliente: 11
+    Nombre: Bartalomeo
+  Apellido: Berlanga
+  UserName: barto
+  Password: 507indio
+      Mail: bartolomeo@gmail.com
+    Genero: M
+Rol: Usuario
+-------Cliente Activo-------
+----------------------
+ Idcliente: 12
+    Nombre: Tadeo
+  Apellido: Rossi
+  UserName: tadeo
+  Password: 507indio
+      Mail: tadeo@gmail.com
+    Genero: M
+Rol: Usuario
+-------Cliente Activo-------
+----------------------
+ Idcliente: 13
+    Nombre: Simon
+  Apellido: Apostoles
+  UserName: simon
+  Password: 507indio
+      Mail: simon@gmail.com
+    Genero: M
+Rol: Usuario
+-------Cliente Activo-------
+----------------------
+ Idcliente: 14
+    Nombre: Yasser
+  Apellido: Al
+  UserName: yasser
+  Password: 12345
+      Mail: yasser@saudi.com
+    Genero: M
+Rol: Usuario
+-------Cliente Activo-------
+----------------------
+ Idcliente: 15
+    Nombre: Abdul
+  Apellido: Yasser
+  UserName: abdul
+  Password: 12345
+      Mail: kalifa@saudi.com
+    Genero: M
+Rol: Admin
+
+------Cliente Activo-------
+
+idPedido--------- 1
+IdCliente-------- 1
+Fecha------------ 21/11/2022
+Descripcion:----- Dispositivo de audio y video
+Costo------------ 54.00
+Pedido anulado--- 0
+
+idPedido--------- 2
+IdCliente-------- 2
+Fecha------------ 23/11/2022
+Descripcion:----- Dispositivo de audio y video
+Costo------------ 2000.00
+Pedido anulado--- 0
+
+idPedido--------- 3
+IdCliente-------- 3
+Fecha------------ 5/09/2022
+Descripcion:----- Dispositivo de audio y video
+Costo------------ 54.00
+Pedido anulado--- 0
+
+idPedido--------- 4
+IdCliente-------- 5
+Fecha------------ 13
+Descripcion:----- Dispositivo de audio y video
+Costo------------ 555.00
+Pedido anulado--- 0
+
+idPedido--------- 5
+IdCliente-------- 7
+Fecha------------ 25/01/2024
+Descripcion:----- Dispositivo de audio y video
+Costo------------ 900.00
+Pedido anulado--- 0
+
+idPedido--------- 6
+IdCliente-------- 3
+Fecha------------ 15/8/2023
+Descripcion:----- Dispositivo de audio y video
+Costo------------ 785.00
+Pedido anulado--- 0
+
+idPedido--------- 7
+IdCliente-------- 2
+Fecha------------ 15/9/2025
+Descripcion:----- Dispositivo de audio y video
+Costo------------ 400.00
+Pedido anulado--- 0
+
+
+
+ID del producto:--------- 1
+Descripcion de producto-- Dispositivo de audio y video
+Precio del producto:----- $ 1000.00
+
+
+ID del producto:--------- 2
+Descripcion de producto-- Dispositivo de Inteligencia Artificial
+Precio del producto:----- $ 2000.00
+
+
+ID del producto:--------- 3
+Descripcion de producto-- Pelota de futbol Qatar
+Precio del producto:----- $ 300.00
+
+
+ID del producto:--------- 4
+Descripcion de producto-- Control Remoto TV smart
+Precio del producto:----- $ 400.00
+
+
+ID del producto:--------- 5
+Descripcion de producto-- Barra de sonido TV
+Precio del producto:----- $ 900.00
+
+
+ID del producto:--------- 6
+Descripcion de producto-- Arbol de Navidad 2022
+Precio del producto:----- $ 785.00
+
+
+ID del producto:--------- 7
+Descripcion de producto-- Laptop Lenovo
+Precio del producto:----- $ 3456.00
+
+
+ID del producto:--------- 8
+Descripcion de producto-- Luz Smart
+Precio del producto:----- $ 432.00
+
+
+ID del producto:--------- 9
+Descripcion de producto-- Dispositivo de IA hogareño
+Precio del producto:----- $ 45633.00
+
+
+ID del producto:--------- 10
+Descripcion de producto-- Teclado inhalambrico
+Precio del producto:----- $ 456.00
+
+
+ID del producto:--------- 11
+Descripcion de producto-- Aire Acondicionado para Qatar
+Precio del producto:----- $ 888.00
+
+
+ID del producto:--------- 12
+Descripcion de producto-- Heladera Samsung
+Precio del producto:----- $ 309.00
+
+
+ID del producto:--------- 13
+Descripcion de producto-- Cerradura electronica
+Precio del producto:----- $ 555.00
+
+
+ID del producto:--------- 14
+Descripcion de producto-- Luces led
+Precio del producto:----- $ 54.00

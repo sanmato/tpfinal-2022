@@ -16,15 +16,15 @@ void MenuPedidosAdmin(char nombreArchivo[],char NombreArchivoProductos[])
         dibujarCuadro(0,0,80,20);
         dibujarCuadro(1,1,77,3);///
 
-        printf("\n\tINGRESO AL MENU DE PEDIDOS ADMIN\n");
-        printf("\n\t---------------------------");
+        printf("\n\tINGRESO AL MENU DE PEDIDOS ADMIN\n\n");
+
         printf("\n\t1.Mostrar Pedidos");
         printf("\n\t2.Modificar un Pedido");
         printf("\n\t3.Dar de Baja un Pedido");
         printf("\n\t4.Modificar Archivo Productos");
         printf("\n\t5.Mostrar Archivo Productos");
         printf("\n\t6.Salir");
-        printf("\n\n  Ingrese una opcion\n\t");
+        printf("\n\n\t Ingrese una opcion\n\t");
         fflush(stdin);
         scanf("%i",&opcion);
 
@@ -96,13 +96,13 @@ void MenuMostrarPedidos(char nombreArchivo[])
         system("cls");
         dibujarCuadro(0,0,80,20);
         dibujarCuadro(1,1,77,3);///
-        printf("----------------------------------------------------------\n");
-        printf("\n\t1.Mostrar solo un pedido");
+
+        printf("\n\n\t1.Mostrar solo un pedido");
         printf("\n\t2.Mostrar todos los pedidos");
         printf("\n\t3.Mostrar los pedidos validos de un determinado cliente"); ///agregar funcion para mostrar los invalidos y todos
         printf("\n\t4.SALIR");
 
-        printf("\n\nIngrese una opcion\t");
+        printf("\n\n\tIngrese una opcion:\t");
         fflush(stdin);
         scanf("%i",&opcion);
 
@@ -122,6 +122,7 @@ void MenuMostrarPedidos(char nombreArchivo[])
             printf("\n\tIngrese la id del cliente\n\t");
             fflush(stdin);
             scanf("%i",&idCliente);
+            system("cls");
             MostrarPedidosPorCliente(nombreArchivo,idCliente);
             system("pause");
             break;
@@ -146,13 +147,13 @@ void MenuClientesAdmin(char NombreArchivo[])
         dibujarCuadro(1,1,77,3);
 
         printf("\n\tINGRESO AL MENU DE CLIENTES ADMIN\n");
-        printf("\n\t---------------------------");
+
         printf("\n\t1. Mostrar Clientes");
         printf("\n\t2. Modificar un Cliente");
 
         printf("\n\t3. Cargar un Cliente");
         printf("\n\t4. Salir");
-        printf("\n\n\t Ingrese una opcion\n\t");
+        printf("\n\n\t Ingrese una opcion:\n\t");
         fflush(stdin);
         scanf("%i",&opcion);
 
@@ -167,6 +168,7 @@ void MenuClientesAdmin(char NombreArchivo[])
             break;
         case 2:
             system("cls");
+            mostrarListaDeClientes(NombreArchivo);
             modificarArchivoCliente(NombreArchivo);
 
             break;
@@ -191,8 +193,6 @@ void MenuProgramaAdmin(char NombreArchivoClientes[],char NombreArchivoPedidos[],
 {
     int opcion;
 
-
-
     do
     {
         system("cls");
@@ -200,13 +200,14 @@ void MenuProgramaAdmin(char NombreArchivoClientes[],char NombreArchivoPedidos[],
         dibujarCuadro(0,0,80,20);
         dibujarCuadro(1,1,77,3);///
         //gotoxy(20,2);
-        printf("\n\tIngreso como ADMIN");
+        printf("\n\tIngreso como ADMIN\n");
         //gotoxy(10,4);
         printf("\n\t1.para menu Cliente");
         // gotoxy(10,5);
         printf("\n\t2.para menu de Pedidos");
+        printf("\n\t3.Estructuras Compuestas y borrado");
         // gotoxy(10,6);
-        printf("\n\t3.para salir");
+        printf("\n\t4.para salir");
         // gotoxy(10,7);
         printf ("\n\tQue funcion desea hacer:\n\t");
         fflush(stdin);
@@ -228,6 +229,12 @@ void MenuProgramaAdmin(char NombreArchivoClientes[],char NombreArchivoPedidos[],
         break;
 
         case 3:
+            {
+                Menutesteo(NombreArchivoClientes,NombreArchivoPedidos);
+            }
+        break;
+
+        case 4:
         {
             printf("\n\tUsted ha salido del menu\n");
         }
@@ -242,7 +249,12 @@ void MenuInicial(char NombreArchivoClientes[],char NombreArchivoPedidos[],char N
 {
     int opcion;
     int ValidarUser=0;
-    system("COLOR 04");
+
+    SMALL_RECT WinRect  = {0, 0, 80, 20};  ///tamanio de ventana
+    SMALL_RECT* WinSize = &WinRect; /// lo pongo en la variable
+    SetConsoleWindowInfo(GetStdHandle(STD_OUTPUT_HANDLE), 1, WinSize); ///seteo tamanio
+
+    system("COLOR 04");///color
 
 
     do
@@ -316,7 +328,7 @@ void MenuProgramaUsuario(char NombreArchivoClientes[],char NombreArchivoPedidos[
         dibujarCuadro(1,1,77,3);
 
         gotoxy(6,2);
-        printf("\n\tIngreso como CLIENTE\n");
+        printf("\n\tIngreso como CLIENTE\n\n");
         printf("\n\t1.Nuevo Usuario");
         printf("\n\t2.Usuario Existente");
         printf("\n\t3.Salir\n");
@@ -328,6 +340,7 @@ void MenuProgramaUsuario(char NombreArchivoClientes[],char NombreArchivoPedidos[
         {
         case 1:
         {
+            system("cls");
             cantidadClientes=cantidadClientesDelArchivo(NombreArchivoClientes);
             cargaDeClientes(NombreArchivoClientes,cantidadClientes);
 
@@ -374,7 +387,6 @@ void MenuClientesUsuario(char NombreArchivoClientes[],int idCliente)
         dibujarCuadro(1,1,77,3);///
 
         printf("\n\tINGRESO AL MENU DE CLIENTES USUARIO\n");
-        printf("\n\t---------------------------");
         printf("\n\t1. Modificar tu Cliente");
         printf("\n\t2. Salir");
         printf("\n\n  Ingrese una opcion\n\t");
@@ -416,8 +428,8 @@ void MenuPedidosUsuario(char nombreArchivoPedidos[],int idCliente,char nombreArc
         dibujarCuadro(0,0,80,20);
         dibujarCuadro(1,1,77,3);///
 
-        printf("\nINGRESO AL MENU DE PEDIDOS USUARIO\n");
-        printf("\n---------------------------");
+        printf("\n\tINGRESO AL MENU DE PEDIDOS USUARIO\n");
+
         printf("\n\t1.Mostrar Pedidos Realizados");
         printf("\n\t2.Modificar un Pedido");///Falta
         printf("\n\t3.Dar de Baja un Pedido");///Falta
@@ -479,6 +491,7 @@ void MenuPedidosUsuario(char nombreArchivoPedidos[],int idCliente,char nombreArc
             break;
         case 4:
             system("cls");
+
             CargarUnPedido(nombreArchivoPedidos,nombreArchivoProductos,idCliente);
 
 
@@ -672,8 +685,6 @@ int ValidadUser(char NombreArchivoClientes[])
                     printf("%c",ch);
                 }
 
-
-
                 if((strcmpi((aux.password),Contra)==0))
                 {
                     flagUser = 1;
@@ -689,5 +700,30 @@ int ValidadUser(char NombreArchivoClientes[])
     return IdCliente;
 
 
+
+}
+///MENU TESTEO
+
+void Menutesteo(char NombreArchivoClientes[],char NombreArchivoPedidos[])
+{
+
+    //int opcion;
+    int id = 0;
+
+    nodoArbolCliente * arbol = inicArbol();
+
+    arbol = CargaClientes(arbol,NombreArchivoClientes);
+
+    arbol = CargaConsumos(arbol,NombreArchivoPedidos);
+
+    mostrarArbolInorder(arbol);
+
+    printf("Ingrese la id del cliente a borrar\n");
+    scanf("%i",&id);
+
+    arbol = eliminarNodoArbol(arbol,id);
+
+ //   mostrarArbolInorder(arbol);
+    system("pause");
 
 }

@@ -11,7 +11,7 @@ void cargarUnClienteEnArchivo(int i, char archivo[])
 
     FILE *archi;
     archi=fopen(archivo,"ab");                              ///modificar
-    printf("Carguemos sus datos\n");
+    printf("\n\tCarguemos sus datos\n\t");
     system("pause");
     if (archi!=NULL)
     {
@@ -21,7 +21,7 @@ void cargarUnClienteEnArchivo(int i, char archivo[])
 
         scanf("%s", a.mail);
 
-        printf("\nEl cliente sera identificado con el siguiente id: %i", i);///POSICION
+        printf("\n\tEl cliente sera identificado con el siguiente id: %i", i);///POSICION
         a.idCliente=i;
 
         printf("\n\tIngrese nombre: ");
@@ -56,7 +56,7 @@ void cargarUnClienteEnArchivo(int i, char archivo[])
         fflush(stdin);
         scanf("%c",&a.genero);
 
-        a.rol = 0;
+        a.rol = 1;
 
         a.activo=1;
 
@@ -421,6 +421,7 @@ void menuDeModificacionUsuario(char archivo[],int posicion)
     {
         do
         {
+            system("cls");
             rewind(archi);
             printf("\nQue informacion desea modificar: ");
             printf("\n a-Nombre");

@@ -16,7 +16,7 @@ void cargarArchivoProductos(char NombreArchivoProducto[])
         printf("\nEl producto sera identificado con el id: %i\n",cantidadProductos);
         a.idProducto=cantidadProductos;
 
-        printf("\nIngrese la descripcion del pedido\n");
+        printf("\nIngrese la descripcion del producto:");
         fflush(stdin);
         gets(a.descripcion);
 

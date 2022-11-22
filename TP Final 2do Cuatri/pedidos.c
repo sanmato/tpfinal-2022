@@ -292,7 +292,7 @@ void  CargarUnPedido(char nombreArchivo[],char nombreArchivoProductos[],int idCl
     pedidos.idCliente=idCliente;
 
 
-    printf("\tIngrese Fecha  DD/MM/AAAA \n");
+    printf("\tIngrese Fecha  DD/MM/AAAA \n\t");
     fflush(stdin);
     gets(pedidos.fecha);
 
@@ -305,7 +305,7 @@ void  CargarUnPedido(char nombreArchivo[],char nombreArchivoProductos[],int idCl
     {
         system("cls");
         MostrarProductos(nombreArchivoProductos);
-        printf("\tIngrese ID del producto que desea:");
+        printf("\nIngrese ID del producto que desea:");
         fflush(stdin);
         scanf("%i",&id);
         idFlag = ComprobarIdProducto(nombreArchivoProductos,id);

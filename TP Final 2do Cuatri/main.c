@@ -10,15 +10,26 @@ int main()
     char NombreProductos[] = {"productos.dat"};
 
     FILE * archi = fopen(NombreClientes,"rb");
+   // int i=cantidadClientesDelArchivo(NombreClientes);
+   // cargaDeClientes(NombreClientes,i);
 
     if(!archi)
     {
         cargaUnAdmin(NombreClientes);
     }
     fclose(archi);
-
+    //cargarUnClienteEnArchivo(15, NombreClientes);
     MenuInicial(NombreClientes,NombrePedidos,NombreProductos);
+   // CargarUnPedido(NombrePedidos,NombreProductos,3);
+   // CargarUnPedido(NombrePedidos,NombreProductos,5);
+   // CargarUnPedido(NombrePedidos,NombreProductos,7);
+   // CargarUnPedido(NombrePedidos,NombreProductos,3);
+   // CargarUnPedido(NombrePedidos,NombreProductos,2);
 
+
+    //mostrarListaDeClientes(NombreClientes);
+    //MostrarTodosLosPedidos(NombrePedidos);
+    //MostrarProductos(NombreProductos);
     return 0;
 }
 

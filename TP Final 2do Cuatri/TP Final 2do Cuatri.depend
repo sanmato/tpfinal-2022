@@ -1,18 +1,19 @@
 # depslib dependency file v1.0
-1668874622 source:f:\onedrive - utn frmdp\progra 2 cuatri\lab 2\tp final 2do cuatri\main.c
+1669071627 source:f:\onedrive - utn frmdp\progra 2 cuatri\lab 2\tp final 2do cuatri\main.c
 	<stdio.h>
 	<stdlib.h>
 	"menu.h"
 
-1668884521 source:f:\onedrive - utn frmdp\progra 2 cuatri\lab 2\tp final 2do cuatri\menu.c
+1669070634 source:f:\onedrive - utn frmdp\progra 2 cuatri\lab 2\tp final 2do cuatri\menu.c
 	"menu.h"
 
-1668884336 f:\onedrive - utn frmdp\progra 2 cuatri\lab 2\tp final 2do cuatri\menu.h
+1669069636 f:\onedrive - utn frmdp\progra 2 cuatri\lab 2\tp final 2do cuatri\menu.h
 	<windows.h>
 	"clientes.h"
 	"pedidos.h"
+	"ADL.h"
 
-1668891178 f:\onedrive - utn frmdp\progra 2 cuatri\lab 2\tp final 2do cuatri\clientes.h
+1669071573 f:\onedrive - utn frmdp\progra 2 cuatri\lab 2\tp final 2do cuatri\clientes.h
 	<stdio.h>
 	<stdlib.h>
 	<malloc.h>
@@ -28,25 +29,89 @@
 	<malloc.h>
 	<string.h>
 
-1668891183 source:f:\onedrive - utn frmdp\progra 2 cuatri\lab 2\tp final 2do cuatri\clientes.c
+1669070961 source:f:\onedrive - utn frmdp\progra 2 cuatri\lab 2\tp final 2do cuatri\clientes.c
 	"clientes.h"
 
-1668889503 source:f:\onedrive - utn frmdp\progra 2 cuatri\lab 2\tp final 2do cuatri\pedidos.c
+1669057380 source:f:\onedrive - utn frmdp\progra 2 cuatri\lab 2\tp final 2do cuatri\pedidos.c
 	"pedidos.h"
 
-1668882294 source:f:\onedrive - utn frmdp\progra 2 cuatri\lab 2\tp final 2do cuatri\productos.c
+1669057104 source:f:\onedrive - utn frmdp\progra 2 cuatri\lab 2\tp final 2do cuatri\productos.c
 	"productos.h"
 
-1668818574 source:f:\onedrive - utn frmdp\progra 2 cuatri\lab 2\tp final 2do cuatri\arbol.c
+1669070014 source:f:\onedrive - utn frmdp\progra 2 cuatri\lab 2\tp final 2do cuatri\arbol.c
 	"arbol.h"
 
-1668818098 f:\onedrive - utn frmdp\progra 2 cuatri\lab 2\tp final 2do cuatri\arbol.h
+1669067701 f:\onedrive - utn frmdp\progra 2 cuatri\lab 2\tp final 2do cuatri\arbol.h
 	"clientes.h"
 	"lista.h"
 
-1668818335 f:\onedrive - utn frmdp\progra 2 cuatri\lab 2\tp final 2do cuatri\lista.h
+1669070014 f:\onedrive - utn frmdp\progra 2 cuatri\lab 2\tp final 2do cuatri\lista.h
 	"pedidos.h"
 
-1668818585 source:f:\onedrive - utn frmdp\progra 2 cuatri\lab 2\tp final 2do cuatri\lista.c
+1669070014 source:f:\onedrive - utn frmdp\progra 2 cuatri\lab 2\tp final 2do cuatri\lista.c
 	"lista.h"
+
+1669069636 source:f:\onedrive - utn frmdp\progra 2 cuatri\lab 2\tp final 2do cuatri\adl.c
+	"ADL.h"
+
+1668993032 f:\onedrive - utn frmdp\progra 2 cuatri\lab 2\tp final 2do cuatri\adl.h
+	"arbol.h"
+
+1669128717 source:c:\users\avalith\documents\utn\tp4finalversion\tp final 2do cuatri (1)\tp final 2do cuatri\adl.c
+	"ADL.h"
+
+1669072017 c:\users\avalith\documents\utn\tp4finalversion\tp final 2do cuatri (1)\tp final 2do cuatri\adl.h
+	"arbol.h"
+
+1669075228 c:\users\avalith\documents\utn\tp4finalversion\tp final 2do cuatri (1)\tp final 2do cuatri\arbol.h
+	"clientes.h"
+	"lista.h"
+
+1669072017 c:\users\avalith\documents\utn\tp4finalversion\tp final 2do cuatri (1)\tp final 2do cuatri\clientes.h
+	<stdio.h>
+	<stdlib.h>
+	<malloc.h>
+	<string.h>
+	<conio.h>
+
+1669072017 c:\users\avalith\documents\utn\tp4finalversion\tp final 2do cuatri (1)\tp final 2do cuatri\lista.h
+	"pedidos.h"
+
+1669072017 c:\users\avalith\documents\utn\tp4finalversion\tp final 2do cuatri (1)\tp final 2do cuatri\pedidos.h
+	"productos.h"
+
+1669072017 c:\users\avalith\documents\utn\tp4finalversion\tp final 2do cuatri (1)\tp final 2do cuatri\productos.h
+	<stdio.h>
+	<stdlib.h>
+	<malloc.h>
+	<string.h>
+
+1669136926 source:c:\users\avalith\documents\utn\tp4finalversion\tp final 2do cuatri (1)\tp final 2do cuatri\arbol.c
+	"arbol.h"
+
+1669121912 source:c:\users\avalith\documents\utn\tp4finalversion\tp final 2do cuatri (1)\tp final 2do cuatri\clientes.c
+	"clientes.h"
+
+1669072017 source:c:\users\avalith\documents\utn\tp4finalversion\tp final 2do cuatri (1)\tp final 2do cuatri\lista.c
+	"lista.h"
+
+1669135919 source:c:\users\avalith\documents\utn\tp4finalversion\tp final 2do cuatri (1)\tp final 2do cuatri\menu.c
+	"menu.h"
+
+1669072017 c:\users\avalith\documents\utn\tp4finalversion\tp final 2do cuatri (1)\tp final 2do cuatri\menu.h
+	<windows.h>
+	"clientes.h"
+	"pedidos.h"
+	"ADL.h"
+
+1669072017 source:c:\users\avalith\documents\utn\tp4finalversion\tp final 2do cuatri (1)\tp final 2do cuatri\pedidos.c
+	"pedidos.h"
+
+1669072017 source:c:\users\avalith\documents\utn\tp4finalversion\tp final 2do cuatri (1)\tp final 2do cuatri\productos.c
+	"productos.h"
+
+1669137648 source:c:\users\avalith\documents\utn\tp4finalversion\tp final 2do cuatri (1)\tp final 2do cuatri\main.c
+	<stdio.h>
+	<stdlib.h>
+	"menu.h"
 

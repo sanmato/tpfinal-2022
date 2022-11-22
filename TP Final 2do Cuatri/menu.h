@@ -4,8 +4,8 @@
 #include <windows.h>
 
 #include "clientes.h"
-#include "pedidos.h"
-
+#include "pedidos.h"///se podrian sacar
+#include "ADL.h"
 
 ///FUNCIONES MENU
 ///MENU Programa
@@ -26,6 +26,8 @@ void gotoxy(int x,int y);
 ///Validacion Usuarios
 int ValidarUserAdmin(char NombreArchivoClientes[]);
 int ValidadUser(char NombreArchivoClientes[]);
+///MENU ESPECIAL PARA TESTEO
+void Menutesteo(char NombreArchivoClientes[],char NombreArchivoPedidos[]);
 
 
 #endif // MENU_H_INCLUDED
