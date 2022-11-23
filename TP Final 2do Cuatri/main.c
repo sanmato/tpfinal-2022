@@ -1,7 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "menu.h"
+#include "pedidos.h"
+#include "clientes.h"
+
+
+
 void cargaUnAdmin(char nombreArchi[]);
+
 
 int main()
 {
@@ -10,26 +16,22 @@ int main()
     char NombreProductos[] = {"productos.dat"};
 
     FILE * archi = fopen(NombreClientes,"rb");
-   // int i=cantidadClientesDelArchivo(NombreClientes);
-   // cargaDeClientes(NombreClientes,i);
+    // int i=cantidadClientesDelArchivo(NombreClientes);
+    // cargaDeClientes(NombreClientes,i);
 
     if(!archi)
     {
         cargaUnAdmin(NombreClientes);
     }
     fclose(archi);
-    //cargarUnClienteEnArchivo(15, NombreClientes);
+
+    //Menutesteo(NombreClientes,NombrePedidos,NombreProductos);
+
     MenuInicial(NombreClientes,NombrePedidos,NombreProductos);
-   // CargarUnPedido(NombrePedidos,NombreProductos,3);
-   // CargarUnPedido(NombrePedidos,NombreProductos,5);
-   // CargarUnPedido(NombrePedidos,NombreProductos,7);
-   // CargarUnPedido(NombrePedidos,NombreProductos,3);
-   // CargarUnPedido(NombrePedidos,NombreProductos,2);
-
-
+    // BajaPedidoPorSoloCliente(NombrePedidos, 12);
     //mostrarListaDeClientes(NombreClientes);
     //MostrarTodosLosPedidos(NombrePedidos);
-    //MostrarProductos(NombreProductos);
+
     return 0;
 }
 
@@ -43,20 +45,26 @@ void cargaUnAdmin(char nombreArchi[])
     if(archi)
     {
 
-    aux.activo=1;
-    strcpy(aux.apellido,"admin");
-    strcpy(aux.nombre,"admin");
-    strcpy(aux.mail,"admin@admin");
-    strcpy(aux.password,"admin");
-    strcpy(aux.userName,"admin");
-    aux.genero = 'x';
-    aux.idCliente = 0;
-    aux.pedidos =NULL;
-    aux.rol= 1;
+        aux.activo=1;
+        strcpy(aux.apellido,"admin");
+        strcpy(aux.nombre,"admin");
+        strcpy(aux.mail,"admin@admin");
+        strcpy(aux.password,"admin");
+        strcpy(aux.userName,"admin");
+        aux.genero = 'x';
+        aux.idCliente = 0;
+        aux.pedidos =NULL;
+        aux.rol= 1;
 
-    fwrite(&aux,sizeof(stCliente),1,archi);
+        fwrite(&aux,sizeof(stCliente),1,archi);
 
-    fclose(archi);
+        fclose(archi);
 
     }
 }
+
+
+
+
+
+

@@ -1,4 +1,5 @@
 #include "lista.h"
+#include "string.h"
 nodoListaPedidos * inicLista()
 {
     return NULL;
@@ -14,31 +15,34 @@ nodoListaPedidos * crearNodo(stPedido dato)
     return nuevo;
 }
 
+
+
 nodoListaPedidos * agregarEnOrdenPorFecha(nodoListaPedidos * lista,nodoListaPedidos * nuevo)
 {
     if(!lista)
     {
-        lista=nuevo;
+        lista = nuevo;
     }
     else
     {
-        if(nuevo->dato.anio <= lista->dato.anio &&  nuevo->dato.mes <= lista->dato.mes && nuevo->dato.dia <= lista->dato.dia)
+        if(strcmp(nuevo->dato.fecha, lista->dato.fecha)<0)
         {
-            lista = agregarListaAlPrincipio( lista, nuevo);
+            lista = agregarListaAlPrincipio(lista, nuevo);
         }
         else
         {
-            nodoListaPedidos * ante = lista;
-            nodoListaPedidos * seg = lista;
+            nodoListaPedidos* ante = lista;
+            nodoListaPedidos* seg = lista->sig;
 
-            while(seg && nuevo->dato.anio >= seg->dato.anio && nuevo->dato.mes >= seg->dato.mes  && nuevo->dato.dia >= seg->dato.dia)
+            while(seg && (strcmp(nuevo->dato.fecha,seg->dato.fecha)>0))
             {
                 ante = seg;
-                seg=seg->sig;
+                seg = seg->sig;
             }
-            ante->sig= nuevo;
             nuevo->sig = seg;
+            ante->sig = nuevo;
         }
+
     }
     return lista;
 }
@@ -111,11 +115,26 @@ void MostrarLista(nodoListaPedidos * lista)
 
     while (seg)
     {
+
         MostrarUnPedido(seg->dato);
         seg=seg->sig;
     }
 }
 
+void MostrarListaValidos(nodoListaPedidos * lista)
+{
+    nodoListaPedidos * seg = lista;
+
+    while (seg)
+    {
+        if(seg->dato.pedidoAnulado == 0)
+        {
+            MostrarUnPedido(seg->dato);
+        }
+
+        seg=seg->sig;
+    }
+}
 nodoListaPedidos * eliminarPrimerNodo(nodoListaPedidos * lista)
 {
     nodoListaPedidos* aBorrar = lista;

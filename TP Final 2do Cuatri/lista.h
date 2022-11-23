@@ -19,6 +19,8 @@ nodoListaPedidos * eliminarNodoLista(nodoListaPedidos * lista,nodoListaPedidos *
 
 
 void   MostrarLista(nodoListaPedidos * lista);
+void MostrarListaValidos(nodoListaPedidos * lista);
+
 
 ///eliminar pedidos de un cliente
 

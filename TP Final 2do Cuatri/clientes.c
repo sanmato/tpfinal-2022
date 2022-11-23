@@ -1,8 +1,12 @@
 ///FUNCIONES CLIENTES
 #include "clientes.h"
+
 void cargarUnClienteEnArchivo(int i, char archivo[])
 {
     int flag=0;
+    int comprobacion=0;
+    char caracter;
+    int c = 0;
 
 
     stCliente a;
@@ -15,11 +19,24 @@ void cargarUnClienteEnArchivo(int i, char archivo[])
     system("pause");
     if (archi!=NULL)
     {
-        printf("\n\tIngrese su mail: ");
-        fflush(stdin);///validar email
+        do
+        {
+            printf("\n\tIngrese su mail: ");
+            fflush(stdin);
+            scanf("%s", a.mail);
+            comprobacion = esCorreoElectronico(a.mail);
+            if(comprobacion == 1)
+            {
+                printf("\nEl correo se cargo correctamente:");
+            }
+            else
+            {
+                printf("\nIngrese un correo valido: \n");
+            }
 
+        }
+        while(comprobacion ==0);
 
-        scanf("%s", a.mail);
 
         printf("\n\tEl cliente sera identificado con el siguiente id: %i", i);///POSICION
         a.idCliente=i;
@@ -48,15 +65,39 @@ void cargarUnClienteEnArchivo(int i, char archivo[])
         while (flag==0);
 
 
-        printf("\nElija su contraseña (5 caracteres como maximo): ");
-        fflush(stdin);
-        scanf("%s", a.password);
+ printf("\nElija su contraseÃ±a (8 caracteres como maximo): ");
+
+
+            while (caracter = getch() )
+                {
+			if (caracter == TECLA_ENTER) {
+				a.password[c] = '\0';
+				break;
+
+			} else if (caracter == TECLA_BACKSPACE) {
+				if (c > 0) {
+					c--;
+					printf("\b \b");
+				}
+
+			} else {
+				if (c < 8) {
+					printf("*");
+					fflush(stdin);
+					a.password[c] = caracter;
+					c++;
+				}
+			}
+
+		}
+
+        //scanf("%s", a.password);
 
         printf("\nGenero M-F-X: ");
         fflush(stdin);
         scanf("%c",&a.genero);
 
-        a.rol = 1;
+        a.rol = 0;
 
         a.activo=1;
 
@@ -125,11 +166,11 @@ void mostrarUnCliente(stCliente a)
     }
     if (a.activo==1)
     {
-        printf("\n-------Cliente Activo-------");
+        printf("\n-------Cliente Activo-------\n");
     }
     else
     {
-        printf("\n-------Cliente No activo------");
+        printf("\n-------Cliente No activo------\n");
     }
 }
 
@@ -190,7 +231,7 @@ void modificarArchivoCliente (char archivo[])
 
             do
             {
-                printf("\nQue usuario desea modificar: ");
+                printf("\nIngrese el nombre de usuario desea modificar: ");
                 fflush(stdin);
                 scanf("%s", a.userName);
                 flag=comprobarExistenciaUserName(archivo,a.userName);
@@ -209,16 +250,13 @@ void modificarArchivoCliente (char archivo[])
         }
         while (opcion=='s');
 
-
-
-
         fclose(archi);
     }
 }
 
 int cantidadClientesDelArchivo (char archivo[])
 {
-    int cantidadClientes;
+    int cantidadClientes = 0;
     FILE*archi;
     archi=fopen(archivo,"r");
     if (archi!=NULL)
@@ -523,3 +561,115 @@ void menuDeModificacionUsuario(char archivo[],int posicion)
         fclose(archi);
     }
 }
+void DarDeBajaCliente(char archivo[],int idCliente)
+{
+    int flag = 0;
+    int num = -1;
+
+    FILE * archi = fopen(archivo,"r+b");
+
+    stCliente aux;
+
+    if(archi)
+    {
+        while(flag==0 && fread(&aux,sizeof(stCliente),1,archi) >0)
+        {
+
+            if(aux.idCliente == idCliente)
+            {
+                aux.activo = 0;
+                flag =1;
+            }
+        }
+    }
+
+    fseek(archi,(sizeof(stCliente)*num), SEEK_CUR);
+    fwrite(&aux,sizeof(stCliente),1,archi);
+    fclose(archi);
+}
+
+int iDeCaracterEnCadena(char *cadena, char caracter)
+{
+    int i = 0;
+    while (cadena[i] != '\0')
+    {
+        char actual = cadena[i];
+        if (actual == caracter)
+        {
+            return i;
+        }
+        i++;
+    }
+
+    return -1;
+}
+
+
+int ultimoiDeCaracterEnCadena(char *cadena, char caracter)
+{
+    int i = strlen(cadena) - 1;
+    while (i >= 0)
+    {
+        char actual = cadena[i];
+        if (actual == caracter)
+        {
+            return i;
+        }
+        i--;
+    }
+    return -1;
+
+}
+
+int esCorreoElectronico(char correo[])
+{
+    int iPunto = iDeCaracterEnCadena(correo, '.');
+    int iArroba = iDeCaracterEnCadena(correo, '@');
+    if (iPunto == -1 || iArroba == -1)
+    {
+        return 0;
+    }
+
+    if (iPunto != ultimoiDeCaracterEnCadena(correo, '.'))
+    {
+        return 0;
+    }
+
+    if (iArroba != ultimoiDeCaracterEnCadena(correo, '@'))
+    {
+        return 0;
+    }
+
+    if (iPunto < iArroba)
+    {
+        return 0;
+    }
+    return 1;
+}
+
+ void actualizaCliente2file(char archivoClientes[],int idCliente)
+ {FILE *archi;
+  stCliente regOfFile;
+  int pos;
+  int encontrado=0;
+
+  archi=fopen(archivoClientes, "r+b");
+
+  if (archi)
+          {
+            while((encontrado==0)&&(fread(&regOfFile, sizeof(stCliente),1,archi)>0))
+            {
+                if (regOfFile.idCliente == idCliente)
+                {
+                    encontrado=1;
+                    pos=ftell(archi)/sizeof(stCliente);
+                }
+            }
+            regOfFile.activo=0;
+            fseek(archi,sizeof(stCliente)*(pos-1),0);
+            fwrite(&regOfFile, sizeof(stCliente),1,archi);
+            fclose(archi);
+          }
+ }
+
+

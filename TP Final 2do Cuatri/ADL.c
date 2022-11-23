@@ -24,12 +24,15 @@ nodoArbolCliente * CargaConsumos(nodoArbolCliente * arbol,char ArchiConsumos[])
 
         while(fread(&r,sizeof(stPedido),1,archi)>0)
         {
-            buscado = buscarUnNodoArbol(arbol,r.idCliente);
-            if(buscado)
-            {
-               // buscado->pedidos=agregarEnOrdenPorFecha(buscado->pedidos,crearNodo(r));
-                buscado->pedidos=agregarListaAlPrincipio(buscado->pedidos,crearNodo(r));
-            }
+           if(r.pedidoAnulado != 1)
+           {
+                buscado = buscarUnNodoArbol(arbol,r.idCliente);
+                if(buscado)
+                {
+                    buscado->pedidos=agregarEnOrdenPorFecha(buscado->pedidos,crearNodo(r));
+                   // buscado->pedidos=agregarListaAlPrincipio(buscado->pedidos,crearNodo(r));
+                }
+           }
         }
         fclose(archi);
     }
@@ -64,12 +67,25 @@ void PasarArchiClientes_A_Arreglo(char archiClientes[],stCliente ArregloClientes
 
         while(fread(&aux,sizeof(stCliente),1,archi)>0)
         {
+           if (aux.activo == 1)
+           {
             ArregloClientes[validos] = aux;
 
             validos++;
+           }
         }
         fclose(archi);
 
     }
 }
 
+void borrarADL(nodoArbolCliente* tree)
+{
+    if (tree)
+    {
+        borrarADL(tree->der);
+        borrarADL(tree->izq);
+        eliminarLista(tree->pedidos);
+        free(tree);
+    }
+}

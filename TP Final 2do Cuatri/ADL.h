@@ -10,6 +10,8 @@ int ContarRegistrosArchivo(char ArchiClientes[]);
 
 void PasarArchiClientes_A_Arreglo(char ArchiClientes[],stCliente ArregloClientes[]);
 
+void borrarADL(nodoArbolCliente* tree);
+
 
 
 

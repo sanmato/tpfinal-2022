@@ -271,11 +271,9 @@ void MenuInicial(char NombreArchivoClientes[],char NombreArchivoPedidos[],char N
         gotoxy(6,7);
         printf("\t2.Ingresar Como Cliente");
         gotoxy(6,8);
-        printf("\t3.MENU TESTEO");
+        printf("\t3. Salir");
         gotoxy(6,9);
-        printf("\t4. Salir");
-        gotoxy(6,10);
-        printf ("\tQue funcion desea hacer: \n");
+        printf ("\t>Que funcion desea hacer: \n");
 
         fflush(stdin);
         printf("\t");
@@ -307,19 +305,13 @@ void MenuInicial(char NombreArchivoClientes[],char NombreArchivoPedidos[],char N
 
         case 3:
         {
-            Menutesteo(NombreArchivoClientes,NombreArchivoPedidos,NombreArchivoProductos);
-        }
-        break;
-
-        case 4:
-        {
             printf("\n\tUsted ha salido del menu\n");
         }
         break;
 
         }
     }
-    while (opcion!=4);
+    while (opcion!=3);
 
 
 
@@ -650,9 +642,7 @@ int ValidadUser(char NombreArchivoClientes[])
 
     char Usuario[30];
     char Contra[30];
-
-    char caracter;
-    int c=0;
+    char ch;
 
     stCliente aux;
 
@@ -677,26 +667,13 @@ int ValidadUser(char NombreArchivoClientes[])
                 printf("\n\tIngrese su contrasenia\n\t");
                 fflush(stdin);
 
-            while (caracter = getch()) {
-			if (caracter == TECLA_ENTER) {
-				Contra[c] = '\0';
-				break;
-
-			} else if (caracter == TECLA_BACKSPACE) {
-				if (c > 0) {
-					c--;
-					printf("\b \b");
-				}
-
-			} else {
-				if (c < 8) {
-					printf("*");
-					fflush(stdin);
-					Contra[c] = caracter;
-					c++;
-				}
-			}
-		}
+                for(int i=0; i<5; i++)
+                {
+                    ch = getch();
+                    Contra[i] = ch;
+                    ch = '*' ;
+                    printf("%c",ch);
+                }
 
                 if((strcmpi((aux.password),Contra)==0))
                 {
@@ -721,16 +698,11 @@ void Menutesteo(char NombreArchivoClientes[],char NombreArchivoPedidos[],char No
 {
 
     int opcion = 0;
-    int id = 0;
-    int anio =0;
-    int mes = 0;
-    int flag = 0;
 
     nodoArbolCliente * arbol = inicArbol();
 
     arbol = CargaClientes(arbol,NombreArchivoClientes);
     arbol = CargaConsumos(arbol,NombreArchivoPedidos);
-
 
     do
     {
@@ -776,49 +748,16 @@ void Menutesteo(char NombreArchivoClientes[],char NombreArchivoPedidos[],char No
 
         case 4:
         {
-            system("cls");
-            nodoArbolCliente * seg = NULL;
-
-            mostrarArbolInorderSoloClientes(arbol);
-            printf("\n\tIngrese el id cliente a liquidar\n\t");
-            scanf("%i",&id);
+            ///mostrarPeriodoDeterminado
 
 
-            while(flag == 0)
-            {
-                seg = buscarUnNodoArbol(arbol,id);
 
-                if(seg!= NULL)
-                {
-
-                    printf("\n\tIngrese el anio\n\t");
-                    scanf("%i",&anio);
-                    printf("\n\tIngrese el mes\n\t");
-                    scanf("%i",&mes);
-
-                    flag =1;
-
-                    imprimePedidosXfecha(arbol,id,mes,anio,NombreArchivoPedidos);
-
-                }
-                else
-                {
-                    system("cls");
-                    mostrarArbolInorderSoloClientes(arbol);
-                    printf("\n\tID incorrecto,ingrese uno valido\n\t");
-                    scanf("%i",&id);
-                }
-            }
-            system("pause");
         }
         break;
 
         case 5:
         {
             printf("\n\tUsted ha salido del menu,cambios guardados\n");
-
-            borrarADL(arbol);
-
             opcion = 5;
             system("pause");
 
@@ -855,7 +794,6 @@ void submenuModificacion(nodoArbolCliente * arbol,char archiClientes[],char arch
             system("cls");
 
             ModificarClienteArbol(arbol,archiClientes);
-
         }
         break;
 
@@ -880,7 +818,7 @@ void submenuModificacion(nodoArbolCliente * arbol,char archiClientes[],char arch
 
 }
 void submenuBaja(nodoArbolCliente * arbol,char archiClientes[],char archiPedidos[])
-{   nodoArbolCliente* seg;
+{
     int opcion = 0;
     int id = 0;
     do
@@ -891,7 +829,7 @@ void submenuBaja(nodoArbolCliente * arbol,char archiClientes[],char archiPedidos
 
         printf("\n\t1.Dar de baja un Cliente");
         printf("\n\t2.Dar de baja un Pedido");
-        printf("\n\t3.Salir\n\t");
+        printf("\n\t3.Ingrese una opcion\n\t");
         scanf("%i",&opcion);
 
 
@@ -905,21 +843,15 @@ void submenuBaja(nodoArbolCliente * arbol,char archiClientes[],char archiPedidos
                 printf("\n\tIngrese la id del cliente para eliminar sus pedidos\n");
                 scanf("%i",&id);
 
-                ///llamar funcion borrar nodo en arbol tiempo de ejecucion
-                seg=buscarUnNodoArbol(arbol, id);
-                if(seg){
-                        arbol = borrarNodoArbol(arbol,id);
-                        actualizaCliente2file(archiClientes, id);//borrado logico - update del campo activo solamente
-                        BajaPedidoPorSoloCliente(archiPedidos, id);
-                        printf("\n\tCliente dado de baja correctamente\n");
-                        system("pause");
 
-                        }
-                  else {
-                        printf("\n\tCliente No existe en la Base de Datos...\n");
-                        system("pause");
-                       }
 
+                DarDeBajaCliente(archiClientes,id);
+                system("pause");
+
+                BajaPedidoPorClienteArbol(archiPedidos,id);
+
+                printf("\n\tCliente dado de baja correctamente\n");
+                system("pause");
             }
             break;
         case 2:
@@ -935,7 +867,6 @@ void submenuBaja(nodoArbolCliente * arbol,char archiClientes[],char archiPedidos
                 aux = buscarUnNodoArbol(arbol,id);
 
                 system("cls");
-                printf("%p",aux->pedidos);
 
                 MostrarListaValidos(aux->pedidos);
 
@@ -957,34 +888,9 @@ void submenuBaja(nodoArbolCliente * arbol,char archiClientes[],char archiPedidos
         }
 
     }while(opcion != 3);
-}
 
-void BajaPedidoPorSoloCliente(char nombreArchivo[], int idCliente)
-{
-    int flag=1;
-    int num = -1;
-    int pos;
 
-    FILE * archivin = NULL;
 
-    stPedido aux,actualizado;
 
-    archivin = fopen(nombreArchivo,"r+b");
-    if (archivin)
-    {
 
-        while((fread(&aux,sizeof(stPedido),1,archivin)>0))
-        {
-            if((aux.idCliente == idCliente)&&(aux.pedidoAnulado==0))
-            {
-                pos=ftell(archivin)/sizeof(stPedido);
-                aux.pedidoAnulado=1;
-                fseek(archivin,sizeof(stPedido)*(pos-1),SEEK_SET);
-                fwrite(&aux, sizeof(stPedido),1,archivin);
-                fseek(archivin,sizeof(stPedido)*(-1),SEEK_CUR);
-            }
-
-        }
-        fclose(archivin);
-    }
 }

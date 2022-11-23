@@ -83,6 +83,7 @@ void mostrarArbolPreOrder(nodoArbolCliente * arbol)
     if(arbol)
     {
         mostrarUnCliente(arbol->dato);
+        printf("\n----------------\n");
         MostrarLista(arbol->pedidos);
         mostrarArbolPreOrder(arbol->izq);
         mostrarArbolPreOrder(arbol->der);
@@ -165,9 +166,118 @@ nodoArbolCliente * eliminarNodoArbol(nodoArbolCliente * arbol, int id)
     return arbol;
 }
 
-
-void mostrarUnNodoArbol(stCliente dato)
+void ModificarClienteArbol(nodoArbolCliente * arbol,char nombreArchiClientes[])
 {
-    ///HACER DEVUELTA
+   printf("\n\tModificacion Cliente\n");
+
+   mostrarArbolInorderSoloClientes(arbol);
+
+   modificarArchivoCliente(nombreArchiClientes);
+
 }
 
+void ModificarPedidoArbol(nodoArbolCliente * arbol,char nombreArchiClientes[],char nombreArchiPedidos[],char nombreArchiProductos[])
+{
+
+   nodoArbolCliente * buscado = inicArbol();
+
+   int id  = 0;
+   int flagMod  = 0;
+
+   mostrarArbolInorderSoloClientes(arbol);
+
+   printf("\nIngrese la id del cliente para modificar su pedido\n\t");
+   scanf("%i",&id);
+
+   ///agregar validacion de id
+   system("cls");
+   buscado = buscarUnNodoArbol(arbol,id);
+   MostrarListaValidos(buscado->pedidos);
+   system("pause");
+
+   ///agregar validacion de id pedido
+
+   printf("\nIngrese la id del pedido a modificar\n\t");
+   scanf("%i",&id);
+
+    flagMod=ModifcarPedidoAdmin(nombreArchiPedidos,id,nombreArchiProductos);
+
+    if(flagMod==1)
+    {
+        printf("\n\tPedido modificado correctamente\n");
+        system("pause");
+    }
+    else
+    {
+        printf("\n\tEl pedido no se pudo modificar. Compruebe la id e intentelo nuevamente\n");
+        system("pause");
+    }
+}
+
+void  mostrarArbolInorderSoloClientes(nodoArbolCliente * arbol)
+{
+    if(arbol)
+    {
+        mostrarArbolInorderSoloClientes(arbol->izq);
+        if(arbol->dato.activo == 1)
+        {
+            mostrarUnCliente(arbol->dato);
+        }
+        mostrarArbolInorderSoloClientes(arbol->der);
+    }
+}
+
+void imprimePedidosXfecha (nodoArbolCliente * arbol, int idCliente, int mes, int anio, char archivo []){
+
+    nodoArbolCliente * aux = buscarUnNodoArbol(arbol, idCliente);
+    nodoListaPedidos * seg=aux->pedidos;
+
+    while(seg)
+    {
+        if((seg->dato.mes == mes) && (seg->dato.anio == anio))
+        {
+                MostrarUnPedido(seg->dato);
+        }
+        seg= seg->sig;
+    }
+
+}
+nodoArbolCliente* buscarMinimo(nodoArbolCliente* nodo)
+{
+nodoArbolCliente* current = nodo;
+
+
+    while (current->izq != NULL)
+        current = current->izq;
+
+    return current;
+}
+
+nodoArbolCliente* borrarNodoArbol(nodoArbolCliente* arbol, int id)
+{
+    if (arbol == NULL)
+        return arbol;
+
+    if (id < arbol->dato.idCliente)
+        arbol->izq = borrarNodoArbol(arbol->izq, id);
+    else if (id > arbol->dato.idCliente)
+        arbol->der = borrarNodoArbol(arbol->der, id);
+    else {
+         if (arbol->izq == NULL)
+            {
+                nodoArbolCliente *temp = arbol->der;
+                free(arbol);
+                return temp;
+            } else if (arbol->der == NULL) {
+                nodoArbolCliente *temp = arbol->izq;
+                free(arbol);
+                return temp;
+            }
+            nodoArbolCliente* temp = buscarMinimo(arbol->der);
+
+            arbol->dato=temp->dato;
+            arbol->pedidos=temp->pedidos;
+            arbol->der = borrarNodoArbol(arbol->der, temp->dato.idCliente);
+    }
+    return arbol;
+}

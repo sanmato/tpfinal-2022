@@ -5,7 +5,7 @@ void MostrarUnPedido(stPedido a)
 {
     printf("\nidPedido--------- %i\n",a.idPedido);
     printf("IdCliente-------- %i\n",a.idCliente);
-    printf("Fecha------------ %i/%i/%i\n",a.dia,a.mes,a.anio);
+    printf("Fecha------------ %s\n",a.fecha);
     printf("Descripcion:----- %s\n",a.descripcion);
     printf("Costo------------ %.2f\n",a.costo);
     printf("Pedido anulado--- %i\n",a.pedidoAnulado);
@@ -234,24 +234,23 @@ void BajaPedidoPorClienteArbol(char nombreArchivo[],int idCliente)
 
     archivin = fopen(nombreArchivo,"r+b");
 
-    if(archivin)
+
+    while(fread(&aux,sizeof(stPedido),1,archivin)>0)
     {
 
-        while(fread(&aux,sizeof(stPedido),1,archivin)>0)
+        if(aux.idCliente == idCliente)
         {
 
-            if(aux.idCliente == idCliente)
-            {
-
-                aux.pedidoAnulado=1;
+            aux.pedidoAnulado=1;
 
 
 //            fseek(archivin, (sizeof(stPedido)*num), SEEK_CUR);
 //            fwrite(&aux,sizeof(stPedido),1,archivin);
-                int pos=ftell(archivin)-sizeof(stPedido);
-                fseek(archivin,pos,SEEK_SET);
+               int pos=ftell(archi)-sizeof(stCliente);
+                fseek(archi,pos,SEEK_SET);
 
-            }
+
+
         }
     }
     fclose(archivin);
@@ -328,9 +327,6 @@ void  CargarUnPedido(char nombreArchivo[],char nombreArchivoProductos[],int idCl
     FILE * archivin = NULL;
     int id = 0,idFlag =0;
     stProductos aux;
-    int dia = 0;
-    int mes = 0;
-    int anio = 0;
 
     archivin = fopen(nombreArchivo,"ab");
 
@@ -340,13 +336,9 @@ void  CargarUnPedido(char nombreArchivo[],char nombreArchivoProductos[],int idCl
     pedidos.idCliente=idCliente;
 
 
-    validarFecha(&dia,&mes,&anio);
-
-    pedidos.dia=dia;
-    pedidos.mes=mes;
-    pedidos.anio=anio;
-
-    int2fecha(dia,mes,anio,pedidos.fecha);
+    printf("\tIngrese Fecha  DD/MM/AAAA \n\t");///AGREGAR INT S
+    fflush(stdin);
+    gets(pedidos.fecha);
 
     pedidos.pedidoAnulado=0;
 
@@ -428,71 +420,8 @@ stProductos ObtenerNombreProducto(char nombreArchivo[],int id)
                 flag = 1;
             }
         }
-        fclose(archivin);
+    fclose(archivin);
     }
 
     return aux;
-}
-
-void validarFecha (int *dia, int *mes,int *anio)
-{
-    int flagFecha=1;
-    do
-    {
-        printf("\tIngrese el anio: \n");
-        scanf("%i",&(*anio));
-
-        printf("\tIngrese el mes: (formato m) \n");
-        scanf("%i",&(*mes));
-
-        printf("\tIngrese el dia: \n");
-        scanf("%i",&(*dia));
-
-        if (*mes==1 || *mes==3 || *mes==5 || *mes==7 || *mes==8 || *mes==10 || *mes==12)
-        {
-            if (*dia>=1 && *dia<=31)
-            {
-                printf("Fecha correcta\n");
-                flagFecha=0;
-            }
-            else
-            {
-                printf("Fecha incorrecta\n ");
-            }
-        }
-
-        if (*mes==4 || *mes==6 || *mes==9 || *mes==11)
-        {
-            if ( *dia >= 1 && *dia <= 30 )
-            {
-                printf("Fecha correcta\n");
-                flagFecha=0;
-            }
-            else
-            {
-                printf("Fecha incorrecta\n ");
-            }
-
-        }
-        if (*mes==2){
-            if(*dia>=1 && *dia<=28){
-                printf("Fecha correcta\n");
-                flagFecha=0;
-            }
-            else
-            {
-                printf("Fecha incorrecta\n ");
-            }
-
-            }
-}while(flagFecha==1);
-
-}
-
-
-void int2fecha(int dia, int mes, int anio, char fecha[20])
-{
-
-       sprintf(fecha,"%d%d%d",anio,mes,dia);
-
 }

@@ -1,12 +1,16 @@
 #ifndef CLIENTES_H_INCLUDED
 #define CLIENTES_H_INCLUDED
 
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <malloc.h>
 #include <string.h>
 #include <conio.h>
 
+#define TECLA_ENTER 13
+#define TECLA_BACKSPACE 8
+#define LONGITUD 5
 
 typedef struct
 {
@@ -38,10 +42,15 @@ void menuDeModificacion (char archivo [],int posicion);
 int buscarPosUserName(char archivo[],char * userName);
 void modificarArchivoCliente (char archivo[]);
 int cantidadClientesDelArchivo (char archivo[]);
-void DarDeBajaCliente(char archivo[]);
+void DarDeBajaCliente(char archivo[],int idCliente);                     /// no existe
 void modificarArchivoClienteUser (char archivo[],int idCliente);
 int buscarPosUserNamePorId(char archivo[],int idCliente);
 void menuDeModificacionUsuario(char archivo[],int posicion);
+///
+int iDeCaracterEnCadena(char *cadena, char caracter);
+int ultimoiDeCaracterEnCadena(char *cadena, char caracter);
+int esCorreoElectronico(char correo[]);
+void actualizaCliente2file(char archivoClientes[],int idCliente);
 
 
 #endif // CLIENTES_H_INCLUDED

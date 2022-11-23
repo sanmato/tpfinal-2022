@@ -27,7 +27,10 @@ void gotoxy(int x,int y);
 int ValidarUserAdmin(char NombreArchivoClientes[]);
 int ValidadUser(char NombreArchivoClientes[]);
 ///MENU ESPECIAL PARA TESTEO
-void Menutesteo(char NombreArchivoClientes[],char NombreArchivoPedidos[]);
+void Menutesteo(char NombreArchivoClientes[],char NombreArchivoPedidos[],char NombreArchivoProductos[]);
+void submenuModificacion(nodoArbolCliente * arbol,char archiClientes[],char archiPedidos[],char archiProductos[]);
+void submenuBaja(nodoArbolCliente * arbol,char archiClientes[],char archiPedidos[]);
+void BajaPedidoPorSoloCliente(char nombreArchivo[], int idCliente);
 
 
 #endif // MENU_H_INCLUDED
